@@ -1,4 +1,6 @@
-<!doctype html>
+from pathlib import Path
+p=Path('/root/output/github-pages-app/index.html')
+html = r'''<!doctype html>
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
@@ -21,9 +23,15 @@
         <div class="ey">Aventura educativa</div>
         <h1>Aventura do 4.º Ano</h1>
         <p>Versão preparada para GitHub Pages. Abre online por link e guarda progresso no browser.</p>
-        <label class="field"><span>Nome do aluno</span><input id="name" type="text" placeholder="Escreve o nome"></label><label class="field"><span>Número do aluno</span><input id="studentNo" type="text" placeholder="Ex.: 12A"></label>
+        <label class="field"><span>Nome do aluno</span><input id="name" type="text" placeholder="Escreve o nome"></label>
+        <label class="field"><span>Número do aluno</span><input id="studentNo" type="text" placeholder="Ex.: 12A"></label>
         <label class="field"><span>Escolher avatar do PC</span><input id="avatar" type="file" accept="image/*"></label>
-        <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn" id="enter">Entrar no mapa</button><button class="ghost" id="reset">Limpar progresso</button></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn" id="enter">Entrar no mapa</button>
+          <button class="ghost" id="reset">Limpar progresso</button>
+          <button class="ghost" id="export">Exportar progresso</button>
+          <label class="ghost" style="display:inline-flex;align-items:center;cursor:pointer">Importar <input id="import" type="file" accept="application/json" style="display:none"></label>
+        </div>
       </section>
       <section id="game" class="hidden">
         <section class="card hero">
@@ -43,4 +51,6 @@
   </div>
   <script src="app.js"></script>
 </body>
-</html>
+</html>'''
+p.write_text(html, encoding='utf-8')
+print('index.html updated')
